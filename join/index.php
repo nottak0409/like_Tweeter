@@ -1,5 +1,6 @@
 <?php
 session_start();
+require('../dbconnect.php');
 
 if(!empty($_POST)){
 	if($_POST['name'] == "") {
@@ -22,6 +23,14 @@ if(!empty($_POST)){
 		}
 	}
 
+  if (empty($error)) {
+		$member = $db->prepare('SELECT COUNT(*) AS cnt FROM members WHERE email=?');
+		$member->execute(array($_POST['email']));
+		$record = $member->fetch();
+		if ($record['cnt'] > 0) {
+			$error['email'] = '指定されたメールアドレスは既に登録されています。';
+		}
+	}
 	if (empty($error)) {
 		$_SESSION['join'] = $_POST;
 		if (isset($fileName)) {
