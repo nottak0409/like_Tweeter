@@ -57,7 +57,7 @@ if (isset($_REQUEST['res'])) {
       <dt><?php echo htmlspecialchars($member['name'], ENT_QUOTES); ?>さん、メッセージをどうぞ</dt>
 			<dd>
 			  <textarea name="message" cols="50" rows="5"><?php echo htmlspecialchars($message, ENT_QUOTES); ?></textarea>
-				<input type="hidden" name="reply_post_id" value="<?php htmlspecialchars($_REQUEST['res'], ENT_QUOTES); ?>" />
+				<input type="hidden" name="reply_post_id" value="<?php echo htmlspecialchars($_REQUEST['res'], ENT_QUOTES); ?>" />
 			</dd>
 		</dl>
 		<div>
@@ -69,7 +69,7 @@ if (isset($_REQUEST['res'])) {
       <img src="join/member_picture/<?php echo htmlspecialchars($post['picture'], ENT_QUOTES); ?>" width="48" height="48" alt="<?php echo htmlspecialchars($POST['name'], ENT_QUOTES); ?>" />
 			<p><?php echo htmlspecialchars($post['message'], ENT_QUOTES); ?><span class="name">(<?php echo htmlspecialchars($post['name'], ENT_QUOTES); ?>)</span>
 			[<a href="index.php?res=<?php echo htmlspecialchars($post['id'], ENT_QUOTES); ?>">RE</a>]</p>
-			<p class="day"><?php echo htmlspecialchars($post['created'], ENT_QUOTES); ?></p>
+			<p class="day"><a href="view.php?id=<?php echo htmlspecialchars($post['id'], ENT_QUOTES); ?>"><?php echo htmlspecialchars($post['created'], ENT_QUOTES); ?></a></p>
 		</div>
 	<?php endforeach; ?>
 	</div>
