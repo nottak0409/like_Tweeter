@@ -1,6 +1,7 @@
 <?php
 session_start();
 require('../dbconnect.php');
+require('../function.php');
 
 if(!isset($_SESSION['join'])){
 	header('Location: index.php');
@@ -44,11 +45,11 @@ if(!empty($_POST)) {
 	  <dl>
 			<dt>ニックネーム</dt>
 			<dd>
-			<?php echo htmlspecialchars($_SESSION['join']['name'], ENT_QUOTES); ?>
+			<?php echo h($_SESSION['join']['name']); ?>
 			</dd>
 			<dt>メールアドレス</dt>
 			<dd>
-			<?php echo htmlspecialchars($_SESSION['join']['email'], ENT_QUOTES); ?>
+			<?php echo h($_SESSION['join']['email']); ?>
 			</dd>
 			<dt>パスワード</dt>
 			<dd>
@@ -56,7 +57,7 @@ if(!empty($_POST)) {
 			</dd>
 			<dt>写真など</dt>
 			<dd>
-			<img src="./member_picture/<?php echo htmlspecialchars($_SESSION['join']['image'], ENT_QUOTES); ?>" width="100" height="100" alt="" />
+			<img src="./member_picture/<?php echo h($_SESSION['join']['image']); ?>" width="100" height="100" alt="" />
 			</dd>
 		</dl>
 		<div><a href="index.php?action=rewrite">&laquo;&nbsp;書き直す</a> | <input

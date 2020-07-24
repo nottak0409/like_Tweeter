@@ -1,5 +1,6 @@
 <?php
 require('dbconnect.php');
+require('function.php');
 
 session_start();
 
@@ -63,14 +64,14 @@ if(!empty($_POST)) {
 		<dl>
 			<dt>メールアドレス</dt>
 			<dd>
-			<input type="text" name="email" size="35" maxlength="255" value="<?php echo htmlspecialchars($_POST['email'], ENT_QUOTES); ?>"/>
+			<input type="text" name="email" size="35" maxlength="255" value="<?php echo h($_POST['email']); ?>"/>
 			<?php if (isset($error['login'])): ?>
 			<p class="error"><?php echo $error['login']; ?></p>
    		<?php endif; ?>
 			</dd>
 			<dt>パスワード</dt>
 			<dd>
-			<input type="text" name="password" size="35" maxlength="255" value="<?php echo htmlspecialchars($_POST['password'], ENT_QUOTES); ?>"/>
+			<input type="text" name="password" size="35" maxlength="255" value="<?php echo h($_POST['password']); ?>"/>
 			<?php if (isset($error['login'])): ?>
 			<p class="error"><?php echo $error['login']; ?></p>
 			<?php endif; ?>
